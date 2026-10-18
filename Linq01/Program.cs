@@ -16,19 +16,31 @@
             #endregion
 
             #region 2. Get a list of only the product names from ProductList. Print each name.
-            // Method syntax
-            var productNames = Source.ProductList.Select(p => p.ProductName);
+            //// Method syntax
+            //var productNames = Source.ProductList.Select(p => p.ProductName);
             
-            foreach (var name in productNames)
+            //foreach (var name in productNames)
+            //{
+            //    Console.WriteLine(name);
+            //}
+            //// Query syntax
+            //var productNames2 = from p in Source.ProductList
+            //                    select p.ProductName;
+            //foreach (var name in productNames2)
+            //{
+            //    Console.WriteLine(name);
+            //}
+
+
+            #endregion
+
+            #region 3. Sort all products by UnitPrice (ascending). Print each product's name and price.
+
+            var sortedProducts = Source.ProductList.OrderBy(p => p.UnitPrice);
+            
+            foreach (var item in sortedProducts)
             {
-                Console.WriteLine(name);
-            }
-            // Query syntax
-            var productNames2 = from p in Source.ProductList
-                                select p.ProductName;
-            foreach (var name in productNames2)
-            {
-                Console.WriteLine(name);
+                Console.WriteLine(item);
             }
 
 
