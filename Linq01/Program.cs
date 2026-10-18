@@ -18,7 +18,7 @@
             #region 2. Get a list of only the product names from ProductList. Print each name.
             //// Method syntax
             //var productNames = Source.ProductList.Select(p => p.ProductName);
-            
+
             //foreach (var name in productNames)
             //{
             //    Console.WriteLine(name);
@@ -36,13 +36,24 @@
 
             #region 3. Sort all products by UnitPrice (ascending). Print each product's name and price.
 
-            var sortedProducts = Source.ProductList.OrderBy(p => p.UnitPrice);
-            
-            foreach (var item in sortedProducts)
+            //var sortedProducts = Source.ProductList.OrderBy(p => p.UnitPrice);
+
+            //foreach (var item in sortedProducts)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            #endregion
+
+            #region 4. Get all products where UnitPrice is between 10 and 30
+
+            var productsInRange = Source.ProductList.Where(p => p.UnitPrice >= 10 && p.UnitPrice <= 30);
+
+            foreach (var item in productsInRange)
             {
                 Console.WriteLine(item);
             }
-
 
             #endregion
         }
