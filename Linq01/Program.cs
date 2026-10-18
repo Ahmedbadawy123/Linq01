@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Numerics;
 using System.Xml.Linq;
 
 namespace Linq01
@@ -119,16 +120,30 @@ namespace Linq01
 
             #region 9. Get all products from the "Beverages" category, sorted by UnitsInStock descending. Print name and stock.
 
-            var beveragesInStock = Source.ProductList
-                                   .Where(p => p.Category == "Beverages")
-                                   .OrderByDescending(p => p.UnitsInStock);
-           
-            foreach (var item in beveragesInStock)
+            //var beveragesInStock = Source.ProductList
+            //                       .Where(p => p.Category == "Beverages")
+            //                       .OrderByDescending(p => p.UnitsInStock);
+
+            //foreach (var item in beveragesInStock)
+            //{
+            //    Console.WriteLine($"Name: {item.ProductName}, Stock: {item.UnitsInStock}");
+            //}
+
+
+
+            #endregion
+
+            #region 10. Using QUERY SYNTAX with a compound from clause, list all orders placed in 1997 or later showing CustomerID and OrderDate.
+
+            var ordersFrom1997 = from c in Source.CustomerList
+                                 from o in c.Orders
+                                 where o.OrderDate.Year >= 1997   
+                                 select new { c.CustomerID, o.OrderDate };
+            
+            foreach (var item in ordersFrom1997)
             {
-                Console.WriteLine($"Name: {item.ProductName}, Stock: {item.UnitsInStock}");
+                Console.WriteLine($"CustomerID: {item.CustomerID}, OrderDate: {item.OrderDate:yyyy/MM/dd}");
             }
-
-
 
             #endregion
         }
