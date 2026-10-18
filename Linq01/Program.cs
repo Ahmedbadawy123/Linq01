@@ -149,15 +149,30 @@ namespace Linq01
 
             #region 11. Show position number alongside ProductName
 
-            var productListWithPosition = Source.ProductList
-                .Select((p, index) => new { Position = index + 1, ProductName = p.ProductName });
+            //var productListWithPosition = Source.ProductList
+            //    .Select((p, index) => new { Position = index + 1, ProductName = p.ProductName });
 
-            // Helping With Ai 
+            //// Helping With Ai 
 
-            foreach (var item in productListWithPosition)
+            //foreach (var item in productListWithPosition)
+            //{
+            //    Console.WriteLine($"{item.Position}. {item.ProductName}");
+            //}
+
+            #endregion
+
+            #region 12. Sort first by-word length and then by a case -insensitive sort of the words in an array. String[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+
+            var Array = new string[] { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+
+            var sortedArr = Array.OrderBy(word => word.Length)
+                                  .ThenBy(word => word, StringComparer.OrdinalIgnoreCase);  // With Search and AI
+
+            foreach (var word in sortedArr)
             {
-                Console.WriteLine($"{item.Position}. {item.ProductName}");
+                Console.WriteLine(word);
             }
+
 
             #endregion
 
