@@ -105,14 +105,29 @@ namespace Linq01
 
             #region 8. Sort ProductList by Category ascending, then within each category, sort by UnitPrice descending.
 
-            var sortedProductListByCategoryAndPrice = Source.ProductList
-                                                      .OrderBy(p => p.Category)
-                                                      .ThenByDescending(p => p.UnitPrice);
+            //var sortedProductListByCategoryAndPrice = Source.ProductList
+            //                                          .OrderBy(p => p.Category)
+            //                                          .ThenByDescending(p => p.UnitPrice);
 
-            foreach (var item in sortedProductListByCategoryAndPrice)
+            //foreach (var item in sortedProductListByCategoryAndPrice)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            #endregion
+
+            #region 9. Get all products from the "Beverages" category, sorted by UnitsInStock descending. Print name and stock.
+
+            var beveragesInStock = Source.ProductList
+                                   .Where(p => p.Category == "Beverages")
+                                   .OrderByDescending(p => p.UnitsInStock);
+           
+            foreach (var item in beveragesInStock)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"Name: {item.ProductName}, Stock: {item.UnitsInStock}");
             }
+
 
 
             #endregion
