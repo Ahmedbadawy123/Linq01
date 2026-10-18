@@ -1,6 +1,8 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.Metrics;
+using System.Drawing;
 using System.Numerics;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Linq01
 {
@@ -163,15 +165,31 @@ namespace Linq01
 
             #region 12. Sort first by-word length and then by a case -insensitive sort of the words in an array. String[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            var Array = new string[] { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //var Array = new string[] { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            var sortedArr = Array.OrderBy(word => word.Length)
-                                  .ThenBy(word => word, StringComparer.OrdinalIgnoreCase);  // With Search and AI
+            //var sortedArr = Array.OrderBy(word => word.Length)
+            //                      .ThenBy(word => word, StringComparer.OrdinalIgnoreCase);  // With Search and AI
 
-            foreach (var word in sortedArr)
+            //foreach (var word in sortedArr)
+            //{
+            //    Console.WriteLine(word);
+            //}
+
+
+            #endregion
+
+            #region 13. Create a list of all digits in the array whose second letter is 'i' that is reversed from the order in the original array.
+
+            var digits = new string[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine","Ten" };
+
+            var filteredDigits = digits.Where(d => d.Length > 1 && d[1] == 'i')
+                                       .Reverse();
+
+            foreach (var digit in filteredDigits)
             {
-                Console.WriteLine(word);
+                Console.WriteLine(digit);
             }
+
 
 
             #endregion
