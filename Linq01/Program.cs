@@ -1,4 +1,7 @@
-﻿namespace Linq01
+﻿using System.Drawing;
+using System.Xml.Linq;
+
+namespace Linq01
 {
     internal class Program
     {
@@ -59,13 +62,30 @@
 
             #region 5. Get all products that are in stock (UnitsInStock > 0) and belong to the "Condiments" category.
 
-            var condimentsInStock = Source.ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Condiments");
+            //var condimentsInStock = Source.ProductList.Where(p => p.UnitsInStock > 0 && p.Category == "Condiments");
 
-            foreach (var item in condimentsInStock)
+            //foreach (var item in condimentsInStock)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //// Why Their is no output?.
+
+
+            #endregion
+
+            #region 6. Create a new anonymous type with three properties:
+            //● Name → the product name
+            //● Price → the unit price
+            //● StockStatus → a string: "Available" if UnitsInStock > 0,otherwise "Out of Stock"
+            //● Print the result.
+
+            var anonymousProductList = Source.ProductList
+            .Select(p => new { Name = p.ProductName, Price = p.UnitPrice, StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock" });
+
+            foreach (var item in anonymousProductList)
             {
                 Console.WriteLine(item);
             }
-            // Why Their is no output?.
 
 
             #endregion
