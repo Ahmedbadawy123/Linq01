@@ -79,14 +79,27 @@ namespace Linq01
             //● StockStatus → a string: "Available" if UnitsInStock > 0,otherwise "Out of Stock"
             //● Print the result.
 
-            var anonymousProductList = Source.ProductList
-            .Select(p => new { Name = p.ProductName, Price = p.UnitPrice, StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock" });
+            //var anonymousProductList = Source.ProductList
+            //.Select(p => new { Name = p.ProductName, Price = p.UnitPrice, StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock" });
 
-            foreach (var item in anonymousProductList)
+            //foreach (var item in anonymousProductList)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            // Helping With Ai 
+
+            #endregion
+
+            #region 7. Print each product's name along with its position (1-based) in the list. Expected format: 1.Chai, 2.Chang, etc.
+
+            var productListWithIndex = Source.ProductList
+                .Select((p, index) => new { Index = index + 1, ProductName = p.ProductName });
+            
+            foreach (var item in productListWithIndex)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"{item.Index}. {item.ProductName}");
             }
-
 
             #endregion
         }
